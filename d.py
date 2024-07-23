@@ -1,7 +1,6 @@
 import requests
 import time
 import random
-import string
 from datetime import datetime, timedelta
 
 def generate_user_agent():
@@ -19,10 +18,6 @@ def send_request(query_id, user_agent):
     url = "https://api.onetime.dog/join"
     payload = f"query_id={query_id}&user=%7B%22id%22%3A1039578077%2C%22first_name%22%3A%22masbagus%20yutl%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22masbagusyutl%22%2C%22language_code%22%3A%22en%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1721706187&hash=88a6653691de79731582158f59744488a6af0a9c52cc9adcc0205889b3f3d6ec"
     headers = {
-        ":authority:": "api.onetime.dog",
-        ":method:": "POST",
-        ":path:": "/join",
-        ":scheme:": "https",
         "Accept": "application/json",
         "Accept-Encoding": "gzip, deflate, br, zstd",
         "Accept-Language": "en-GB,en;q=0.9,en-US;q=0.8",
