@@ -17,7 +17,7 @@ def send_login_request(payload, user_agent):
         "Accept-Encoding": "gzip, deflate, br, zstd",
         "Accept-Language": "en-GB,en;q=0.9,en-US;q=0.8",
         "Cache-Control": "no-cache",
-        "Content-Length": "319",
+        "Content-Length": str(len(payload)),
         "Content-Type": "text/plain;charset=UTF-8",
         "Origin": "https://onetime.dog",
         "Pragma": "no-cache",
@@ -92,6 +92,10 @@ def main():
         # Send login request
         login_response = send_login_request(payload, user_agent)
         print(f"Login response status: {login_response.status_code}")
+
+        # Print response headers
+        if login_response.status_code == 200:
+            print(f"Login response headers: {login_response.headers}")
         
         if login_response.status_code != 200:
             print("Error in login request.")
