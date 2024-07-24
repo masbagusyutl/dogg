@@ -161,8 +161,11 @@ def main():
         print(f"Fetching rewards for account {index + 1}/{num_accounts}")
         rewards_response = fetch_rewards(user_id, user_agent)
         if rewards_response.status_code == 200:
-            rewards_info = rewards_response.json()
-            print_rewards_info(rewards_info)
+            try:
+                rewards_info = rewards_response.json()
+                print_rewards_info(rewards_info)
+            except json.JSONDecodeError:
+                print(f"Failed to decode rewards response for account {index + 1}. Response content: {rewards_response.text}")
         else:
             print(f"Failed to fetch rewards for account {index + 1} with status code: {rewards_response.status_code}")
 
