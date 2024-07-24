@@ -1,5 +1,4 @@
 import requests
-import json
 import time
 import random
 from datetime import datetime, timedelta
@@ -88,11 +87,8 @@ def main():
             print("Error in rewards request.")
             continue
 
-        try:
-            rewards_info = rewards_response.json()
-            print(f"Rewards Info:\nTotal: {rewards_info['total']}\nAge: {rewards_info['age']}\nPremium: {rewards_info['premium']}\nFrens: {rewards_info['frens']}\nBoost: {rewards_info['boost']}\nConnect: {rewards_info['connect']}\nDaily: {rewards_info['daily']}")
-        except json.JSONDecodeError:
-            print("Error decoding rewards response.")
+        # Print raw response text
+        print(f"Rewards Info:\n{rewards_response.text}")
         
         # Wait 5 seconds before processing the next account
         time.sleep(5)
