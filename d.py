@@ -2,7 +2,6 @@ import requests
 import json
 import time
 import random
-import string
 from datetime import datetime, timedelta
 
 def get_data_from_file(filename):
@@ -32,28 +31,6 @@ def send_event_request(data, user_agent):
         "User-Agent": user_agent
     }
     response = requests.post(url, json=data, headers=headers)
-    return response
-
-def send_login_request(data, user_agent):
-    url = "https://api.onetime.dog/join"
-    headers = {
-        "Accept": "application/json",
-        "Accept-Encoding": "gzip, deflate, br, zstd",
-        "Accept-Language": "en-GB,en;q=0.9,en-US;q=0.8",
-        "Cache-Control": "no-cache",
-        "Content-Type": "text/plain;charset=UTF-8",
-        "Origin": "https://onetime.dog",
-        "Pragma": "no-cache",
-        "Referer": "https://onetime.dog/",
-        "Sec-Ch-Ua": "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Microsoft Edge\";v=\"126\"",
-        "Sec-Ch-Ua-Mobile": "?0",
-        "Sec-Ch-Ua-Platform": "\"Windows\"",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-site",
-        "User-Agent": user_agent
-    }
-    response = requests.post(url, data=data, headers=headers)
     return response
 
 def get_rewards_info(user_id, user_agent):
@@ -98,14 +75,6 @@ def main():
         
         if event_response.status_code != 202:
             print("Error in event request.")
-            continue
-
-        # Send login request
-        login_response = send_login_request(data, user_agents[index])
-        print(f"Login response status: {login_response.status_code}")
-
-        if login_response.status_code != 200:
-            print("Error in login request.")
             continue
 
         # Extract user ID from data
