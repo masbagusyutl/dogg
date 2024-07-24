@@ -17,7 +17,7 @@ def send_login_request(payload, user_agent):
         "Accept-Encoding": "gzip, deflate, br, zstd",
         "Accept-Language": "en-GB,en;q=0.9,en-US;q=0.8",
         "Cache-Control": "no-cache",
-        "Content-Length": str(len(payload)),
+        "Content-Length": "319",
         "Content-Type": "text/plain;charset=UTF-8",
         "Origin": "https://onetime.dog",
         "Pragma": "no-cache",
